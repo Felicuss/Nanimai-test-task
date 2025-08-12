@@ -1,7 +1,4 @@
 ## Balance Service (FastAPI + gRPC)
-
-Минимальный запуск и использование.
-
 ### Запуск
 ```bash
 docker compose up -d --build
