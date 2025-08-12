@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "balance-service"
+version = "0.1.0"
+description = ""
+authors = ["Ярослав <rolduginyroslav@yandex.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = {extras = ["standard"], version = "^0.116.1"}
+uvicorn = "^0.35.0"
+sqlalchemy = "^2.0.43"
+pydantic-settings = "^2.10.1"
+asyncpg = "^0.30.0"
+grpcio = "1.62.2"
+grpcio-tools = "1.62.2"
+protobuf = "4.25.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,8 @@
+fastapi[standard]==0.116.1
+uvicorn==0.35.0
+SQLAlchemy==2.0.43
+asyncpg==0.30.0
+pydantic-settings==2.10.1
+grpcio==1.62.2
+grpcio-tools==1.62.2
+protobuf==4.25.3

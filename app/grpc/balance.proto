@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package balance;
+
+service BalanceAPI {
+  rpc GetBalance (GetBalanceRequest) returns (BalanceResponse);
+  rpc AdjustLimits (AdjustLimitsRequest) returns (BalanceResponse);
+  rpc AdjustCurrent (AdjustCurrentRequest) returns (BalanceResponse);
+  rpc OpenTransaction (OpenTransactionRequest) returns (TransactionResponse);
+  rpc ConfirmTransaction (ConfirmTransactionRequest) returns (TransactionResponse);
+  rpc CancelTransaction (CancelTransactionRequest) returns (TransactionResponse);
+}
+
+message GetBalanceRequest { string user_id = 1; }
+
+message AdjustLimitsRequest { string user_id = 1; int64 delta = 2; }
+
+message AdjustCurrentRequest { string user_id = 1; int64 delta = 2; }
+
+message OpenTransactionRequest {
+  string user_id = 1;
+  string service_id = 2;
+  string external_tx_id = 3;
+  int64 amount = 4;
+  int32 timeout_seconds = 5;
+}
+
+message ConfirmTransactionRequest { string user_id = 1; string service_id = 2; string external_tx_id = 3; }
+
+message CancelTransactionRequest { string user_id = 1; string service_id = 2; string external_tx_id = 3; }
+
+message BalanceResponse {
+  string user_id = 1;
+  int64 current = 2;
+  int64 maximum = 3;
+  int64 locked_total = 4;
+}
+
+message TransactionResponse {
+  int64 id = 1;
+  string user_id = 2;
+  string service_id = 3;
+  string external_tx_id = 4;
+  int64 amount = 5;
+  string status = 6;
+  string created_at = 7;
+  string expires_at = 8;
+  string closed_at = 9;
+}

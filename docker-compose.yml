@@ -1,0 +1,26 @@
+# Use postgres/example user/password credentials
+
+services:
+  db:
+    image: postgres:17.5
+    restart: always
+    shm_size: 128mb
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: balance
+  app:
+    build: .
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: balance
+      DB_USER: postgres
+      DB_PASSWORD: password
+    ports:
+      - '8000:8000'
+      - '50051:50051'
