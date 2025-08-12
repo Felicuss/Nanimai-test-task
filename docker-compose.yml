@@ -11,10 +11,16 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_DB: balance
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d balance"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
   app:
     build: .
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     environment:
       DB_HOST: db
       DB_PORT: 5432
