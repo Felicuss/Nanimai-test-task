@@ -1,7 +1,4 @@
 ## Balance Service (FastAPI + gRPC)
-
-Минимальный запуск и использование.
-
 ### Запуск
 ```bash
 docker compose up -d --build
@@ -17,7 +14,6 @@ pip install -r requirements.txt
 docker run --name balance-db -e POSTGRES_PASSWORD=password -e POSTGRES_DB=balance -p 5432:5432 -d postgres:17.5
 export DB_HOST=localhost DB_PORT=5432 DB_NAME=balance DB_USER=postgres DB_PASSWORD=password
 uvicorn app.main:app --host 0.0.0.0 --port 8000
-# в другом терминале:
 python -m app.grpc.server
 ```
 
